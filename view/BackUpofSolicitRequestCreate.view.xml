@@ -1,0 +1,1293 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="zmm001.zsolreq.controller.SolicitRequest" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout">
+	<Page showHeader="true" title="Solicitation Request" showFooter="true" showNavButton="true" navButtonPress="_onPageNavButtonPress">
+		<content>
+			<Image src="/webapp/resources/iid_century_logo_transparent.png" height="66px" width="101.27083587646484px" visible="true"
+				densityAware="false"/>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Basic Data" level="H3"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Solicitation Request Title" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165254544-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-2-fields-sap_m_Input-1609165795267-upgpuv486n5pr16dgoimuik42_S2"
+										type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="true"
+										valueStateText="Invalid entry" maxLength="120"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Date" design="Bold" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<DatePicker
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165254544-formContainers-build_simple_form_FormContainer-1609165318230-formElements-build_simple_form_FormElement-2-fields-sap_m_DatePicker-1609165756811-upgpuv486n5pr16dgoimuik42_S2"
+										width="auto" displayFormat="medium" required="true" valueStateText="Invalid entry" enabled="true" visible="true" valueFormat="yyyyMMdd"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Header Data" level="H3"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Purchasing Group" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item text="Item" enabled="true" key="Item"/>
+											<core:Item text="Item" enabled="true" key="Item"/>
+											<core:Item text="Item" enabled="true" key="Item"/>
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title>
+							<core:Title text="Purchasing Group" level="Auto"/>
+						</form:title>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Requestor" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item text="Item" enabled="true" key="Item"/>
+											<core:Item text="Item" enabled="true" key="Item"/>
+											<core:Item text="Item" enabled="true" key="Item"/>
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Department" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title>
+							<core:Title text="Requestor" level="Auto"/>
+						</form:title>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements/>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements/>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<Table width="1218.4722900390625px" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20"
+				growingScrollToLoad="true" class="sapUiResponsiveMargin">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+						<content>
+							<Title text="Requisition Number" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+							<ToolbarSpacer width=""/>
+							<OverflowToolbarButton text="Sort" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+							<OverflowToolbarButton text="Filter" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+							<OverflowToolbarButton text="Group" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+							<OverflowToolbarButton text="Settings" type="Transparent" icon="sap-icon://action-settings" iconFirst="true" width="auto" enabled="true"
+								visible="true" iconDensityAware="false"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Item Number" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Requestor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Requested Delivery Date" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Amount" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>
+							<ObjectIdentifier title="" text="" titleActive="false" visible="true"/>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+						</cells>
+					</ColumnListItem>
+					<ColumnListItem type="Active">
+						<cells>
+							<ObjectIdentifier title="" text="" titleActive="false" visible="true"/>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="1" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Proposed Due Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Date" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Solicitation Type" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item text="IFB" enabled="true" key="IFB"/>
+											<core:Item text="PRFP" enabled="true" key="PRFP"/>
+											<core:Item text="QR" enabled="true" key="QR"/>
+											<core:Item text="SRFP" enabled="true" key="SRFP"/>
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Solicitation #" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="100"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Status" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item text="Initiated" enabled="true" key="Initiated"/>
+											<core:Item text="In Approval" enabled="true" key="In Approval"/>
+											<core:Item text="Approved" enabled="true" key="Approved"/>
+											<core:Item text="Awarded" enabled="true" key="Awarded"/>
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="2" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Mandatory Meeting" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165569081-formContainers-build_simple_form_FormContainer-1609238564588-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609239123276-upgpuv486n5pr16dgoimuik42_S2"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect">
+										<buttons>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Has Room been Reserved?" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit"
+										visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165569081-formContainers-build_simple_form_FormContainer-1609238564588-upgpuv486n5pr16dgoimuik42_S2-formElements-build_simple_form_FormElement-1619162522765-fields-sap_m_RadioButtonGroup-1"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect1">
+										<buttons>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Location" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="293.4259338378906px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="150"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Proposed Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Date" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Time" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Time" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="3" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Jobsite Walk" design="Standard" width="100%" required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165569081-formContainers-build_simple_form_FormContainer-1609244823378-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609244841439-upgpuv486n5pr16dgoimuik42_S2"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect2">
+										<buttons>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Location" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="327.5115966796875px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="120"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Proposed Date" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Date" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Time" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Time" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="4 The Solicitation is for :" level="Auto"/>
+				</form:title>
+				<form:formContainers/>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title/>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="10%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="Engineering Services" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+									<CheckBox text="Materials" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+									<CheckBox text="Professional Services" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="10%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="Other:(define below)" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+									<CheckBox text="Information Technology" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+									<CheckBox text="Construction Services" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="5" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Will a Contractor's License be required for this work?" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-content-build_simple_form_Form-1609165569081-formContainers-build_simple_form_FormContainer-1609245995930-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609246233487-upgpuv486n5pr16dgoimuik42_S2"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect3">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="A" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit" wrapping="false"
+										useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="B" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit" wrapping="false"
+										useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="C" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<ComboBox editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%">
+										<items>
+											<core:Item text="2 - Insulation and Acoustical Contractor" enabled="true" key="2 - Insulation and Acoustical Contractor"/>
+											<core:Item text="4 - Boiler, Hot Water Heating and Steam Fitting Contractor" enabled="true"
+												key="4 - Boiler, Hot Water Heating and Steam Fitting Contractor"/>
+											<core:Item text="5 - Framing and Rough Carpentry Contractor" enabled="true" key="5 - Framing and Rough Carpentry Contractor"/>
+											<core:Item text="6 - Cabinet, Millwork and Finish Carpentry Contractor" enabled="true"
+												key="6 - Cabinet, Millwork and Finish Carpentry Contractor"/>
+											<core:Item text="7 - Low Voltage Systems Contractor" enabled="true" key="7 - Low Voltage Systems Contractor"/>
+											<core:Item text="8 - Concrete Contractor" enabled="true" key="8 - Concrete Contractor"/>
+											<core:Item enabled="true"/>
+										</items>
+									</ComboBox>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="If you designate a type 'C', you must enter the specialty classification number List Specialty #'s" design="Standard"
+										width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="189.6354217529297px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+									<Link href="http://www.cslb.ca.gov/About_Us/Library/Licensing_Classifications/"
+										text="http://www.cslb.ca.gov/About_Us/Library/Licensing_Classifications/" textAlign="Begin" width="auto" target="_blank" wrapping="false"
+										enabled="true" visible="true" emphasized="false" subtle="false"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title>
+							<core:Title text="Type" level="Auto"/>
+						</form:title>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="6" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Will payment of Prevailing Wages be required?" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1609685622810-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609685916775"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect4">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title/>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Do you require a &quot;Bid Bond&quot; for this Solicitation?" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1609685224853-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609685450146"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect5">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title>
+							<core:Title text="7" level="Auto"/>
+						</form:title>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="8" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="What is the project estimate?" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"
+										visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="344.5602111816406px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="9.What is the expected time line resulting contract?" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Begin" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"
+										valueFormat="yyyyMMdd"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="End" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<DatePicker width="auto" displayFormat="medium" required="false" valueStateText="Invalid entry" enabled="true" visible="true"
+										valueFormat="yyyyMMdd"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title
+						text="10. Along with a complete printed version of our solicitation package, all files, drawings, charts, and supporting information are included in the digital format?"
+						level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="USB/CD" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="" selected="true" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit" wrapping="false"
+										useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Email" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="" selected="true" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit" wrapping="false"
+										useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Other" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="422.7778015136719px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="11" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Will we be charging for drawing sets &amp; specs ?" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1609416428651-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609416531393"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect6">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="12" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Has this Project and Budget been Approved" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1609403388786-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1609403712376"
+										columns="8" selectedIndex="0" valueState="None" width="283.888916015625px" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect7">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="If Yes Clarify" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="368.067138671875px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="369.9884338378906px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="13" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="How many copies of the response Forms are required" design="Standard" width="100%" required="false" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="454.51000000px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="14" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Funding Source / Other Federal Requirements" design="Standard" width="100%" required="false" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="*Federal Funding" selected="true" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="*State of CA Funding" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="*IID Revenues" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<CheckBox text="*Other Funding Source" selected="false" editable="true" enabled="true" visible="true" width="auto" textDirection="Inherit"
+										wrapping="false" useEntireWidth="true"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Identify the program, contract or other funding source" design="Standard" width="100%" required="false" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input value="" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="100"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title
+						text="15. &quot;If this project is funded with federal or state funds , please identify the program, contract or other funding source from which the funds were obtained :"
+						level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="If materials are involved: Is this purchase subject to the &quot; Buy America Act&quot;?" design="Standard" width="100%"
+										required="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1609689643198-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-2-fields-sap_m_RadioButtonGroup-1609689843804"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect8">
+										<buttons>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+									<Input value="Also Please attach any documentation pursuant to which the Federal or State Funds were obtained." type="Text"
+										showValueHelp="false" enabled="true" visible="true" width="410.00000000px" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="16" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Does this Solicitation have any other Special Requirements ? Please clarify" design="Standard" width="100%" required="false"
+										textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<TextArea rows="4" cols="20" maxLength="0" wrapping="None" enabled="true" required="false" valueStateText="Invalid entry" visible="true"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="17" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Regulatory / Compliance : Subject to NERC - CIP-013 Standard" design="Standard" width="100%" required="true" textAlign="Begin"
+										textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<RadioButtonGroup
+										id="sap_Responsive_Page_0-upgpuv486n5pr16dgoimuik42_S2-content-build_simple_form_Form-1619164938672-formContainers-build_simple_form_FormContainer-1-formElements-build_simple_form_FormElement-1-fields-sap_m_RadioButtonGroup-1"
+										columns="8" selectedIndex="0" valueState="None" width="auto" editable="true" enabled="true" textDirection="Inherit"
+										select="_onRadioButtonGroupSelect9">
+										<buttons>
+											<RadioButton text="No" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+											<RadioButton text="Yes" editable="true" enabled="true" visible="true" width="auto" valueState="None" selected="false"/>
+										</buttons>
+									</RadioButtonGroup>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Award Information:" level="Auto"/>
+				</form:title>
+				<form:formContainers>
+					<form:FormContainer visible="true">
+						<form:formElements>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Supplier Name" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Contact Person" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Address" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Phone Number" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Fax" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Email" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Other" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement visible="true">
+								<form:label>
+									<Label text="Email" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+								</form:label>
+								<form:fields>
+									<Input type="Text" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" required="false"
+										valueStateText="Invalid entry" maxLength="0"/>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+						<form:title/>
+					</form:FormContainer>
+				</form:formContainers>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Approval Overview" level="Auto"/>
+				</form:title>
+				<form:formContainers/>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+				class="sapUiResponsiveMargin">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+						<content>
+							<Title text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+							<Button text="Add Approver" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+							<Button text="Remove Approver" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Approver Title" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Approver" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Date received" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Date Approved" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Comments" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Status" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>
+							<ObjectIdentifier title="" text="" titleActive="false" visible="true"/>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<form:Form width="100%" editable="true" visible="true">
+				<form:title>
+					<core:Title text="Attachments" level="Auto"/>
+				</form:title>
+				<form:formContainers/>
+				<form:layout>
+					<form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
+				</form:layout>
+			</form:Form>
+			<Table width="auto" noDataText="No data" mode="None" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true"
+				class="sapUiResponsiveMargin">
+				<infoToolbar>
+					<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+						<content>
+							<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</content>
+					</Toolbar>
+				</infoToolbar>
+				<headerToolbar>
+					<OverflowToolbar width="auto" height="auto" design="Transparent" visible="true" enabled="true">
+						<content>
+							<Title text="" titleStyle="Auto" width="auto" textAlign="Begin" visible="true" wrapping="false"/>
+							<Button text="Add Attachments" type="Default" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+							<Button text="Delete Attachments" type="Default" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true"
+								iconDensityAware="false"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="File Name" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Description" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Changed By" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+					<Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+						<header>
+							<Text text="Changed On" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+						</header>
+						<footer/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Active">
+						<cells>
+							<ObjectIdentifier title="" text="" titleActive="false" visible="true"/>
+							<Text text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+							<layout:HorizontalLayout>
+								<layout:content/>
+							</layout:HorizontalLayout>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<ToolbarSpacer width=""/>
+					<Button text="{i18n>SAVE}" type="Transparent" press="onSubmit"/>
+					<Button text="{i18n>ORDER}" type="Transparent" press="onOrder"/>
+					<Button text="{i18n>CANCEL}" type="Transparent" iconDensityAware="false" press="onCancel"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<headerContent/>
+		<subHeader/>
+		<customHeader/>
+	</Page>
+</mvc:View>

@@ -1,0 +1,151 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="zmm001.zsolreq.controller.Worklist" xmlns="sap.m" xmlns:layout="sap.ui.layout"
+	xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" xmlns:semantic="sap.m.semantic">
+	<!--<semantic:SemanticPage id="WorkList" headerPinnable="false" class="sapUiResponsiveContentPadding sapUiFioriObjectPage"-->
+	<!--	backgroundDesign="List" toggleHeaderOnTitleClick="false">-->
+	<!--<semantic:titleHeading>-->
+	<!--	<Title text="Manage Solicitation Request"/>-->
+	<!--</semantic:titleHeading>-->
+	<!--<semantic:headerContent>-->
+	<Page id="WorkList" showHeader="true" showNavButton="false" backgroundDesign="List" navButtonPress="_onPageNavButtonPress"
+		class="sapUiResponsiveContentPadding sapUiFioriObjectPage">
+	
+		<IconTabBar id="iconTabBar" select=".onQuickFilter" class="sapUiSizeCompact">
+			<items>
+				<IconTabFilter key="ALL" iconColor="Positive" icon="sap-icon://multiselect-all" count="{worklistView>/ALL}" text="{i18n>WorklistFilterAll}"/>
+				<IconTabFilter key="DRAFT" icon="sap-icon://request" count="{worklistView>/DRAFT}" text="{i18n>WorklistFilterDraft}"/>
+				<IconTabFilter key="INAPPROVAL" icon="sap-icon://approvals" iconColor="Contrast" count="{worklistView>/INAPPROVAL}"
+					text="{i18n>WorklistFilterInApproval}"/>
+				<IconTabFilter key="APPROVED" icon="sap-icon://hr-approval" iconColor="Positive" count="{worklistView>/APPROVED}"
+					text="{i18n>WorklistFilterApproved}"/>
+				<IconTabFilter key="REJECTED" icon="sap-icon://employee-rejections" iconColor="Negative" count="{worklistView>/REJECTED}"
+					text="{i18n>WorklistFilterRejected}"/>
+				<IconTabFilter key="WITHDRAW" icon="sap-icon://sys-cancel" iconColor="Critical" count="{worklistView>/WITHDRAW}"
+					text="{i18n>WorklistFilterWithDraw}"/>
+						<IconTabFilter key="COMPLETED" icon="sap-icon://complete" count="{worklistView>/COMPLETED}" text="{i18n>WorklistFilterComplete}"/>
+			</items>
+			<content>
+		<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true" class="sapUiSizeCompact">
+			<fb:filterGroupItems>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="{i18n>SolReqNumber}" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<Input type="Text" value="{SolReq>/filters/SolReqNumber}" showValueHelp="false">
+							<!--<suggestionItems>-->
+							<!--	<core:Item text="{SAPPayCode}" key="{SAPPayCodeDesc}"/>-->
+							<!--</suggestionItems>-->
+						</Input>
+					</fb:control>
+				</fb:FilterGroupItem>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="{i18n>Type}" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="SolReqSolType" selectedKey="{SolReq>/filters/Type}" items="{ path: '/SolicitationTypeSet', sorter: { path: 'Soltyp' } }"
+							forceSelection="true" enabled="{=${oCrtSolReq>/IsEdit}===true?true:false}">
+							<core:Item key="{Soltyp}" text="{Soltyp}"/>
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="{i18n>Requester}" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<Input id="idSolReqRequestorWV" showSuggestion="false" showValueHelp="true" value="{SolReq>/filters/Requestor}" suggestionItems="{/UserSet}"
+							valueHelpOnly='false' valueHelpRequest="handleF4RequestorWV" editable="{=${oCrtSolReq>/IsEdit}===true?true:false}">
+							<suggestionItems>
+								<core:Item text="{Bname}"/>
+							</suggestionItems>
+						</Input>
+					</fb:control>
+				</fb:FilterGroupItem>
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="D" label="{i18n>Department}" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox selectedKey="{SolReq>/filters/Dept}" items="{ path: '/DepartmentsSet', sorter: { path: 'Dptnm' } }" forceSelection = "false"
+							editable="true" change="onDept" enabled="{=${oCrtSolReq>/IsEdit}===true?true:false}">
+							<core:Item key="{Dptnm}" text="{Dptnm}"/>
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+			</fb:filterGroupItems>
+		</fb:FilterBar>
+				<Table id="idSolReqTbl" growing="true" growingScrollToLoad="true" noDataText="{i18n>tableNoDataText}" updateFinished=".onUpdateFinished"
+					backgroundDesign="Solid" busyIndicatorDelay="{worklistView>/tableBusyDelay}" width="auto"
+					items="{path:'/ZC_SOLICITATION_REQUEST', sorter:{path:'RequestNumber',descending : 'true'}}">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+							<ToolbarSpacer/>
+							<ToolbarSpacer width=""/>
+							<!--<OverflowToolbarButton text="Sort" icon="sap-icon://sort"/>-->
+							<!--<OverflowToolbarButton text="Filter" icon="sap-icon://filter"/>-->
+							<!--<OverflowToolbarButton text="Group" icon="sap-icon://group-2"/>-->
+							<Button id="idButtonExportData" press="onExportData" type="Transparent" icon="sap-icon://excel-attachment"
+								tooltip="Export Solicitation Request"/>
+							<Button text="Create Solicitation Request" icon="sap-icon://add" press="_onCreateSolReq" type="Accept"/>
+							<!--<OverflowToolbarButton text="Settings" icon="sap-icon://action-settings"/>-->
+							<!--<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch" width="auto"></SearchField>-->
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column id="idSolReqTblColSolReq">
+							<Text id="idSolReqTblColTxtSolReq" text="{i18n>SolReqNumber}"/>
+						</Column>
+						<Column id="idSolReqTblColType">
+							<Text id="idSolReqTblColTxtType" text="{i18n>Type}"/>
+						</Column>
+						<Column id="idSolReqTblColTitle">
+							<Text id="idSolReqTblColTxtTitle" text="{i18n>Title}"/>
+						</Column>
+						<Column id="idSolReqTblColRequestor">
+							<Text id="idSolReqTblColTxtRequestor" text="{i18n>Requester}"/>
+						</Column>
+						<Column id="idSolReqTblColRequestorName">
+							<Text id="idSolReqTblColTxtRequestorName" text="{i18n>RequesterName}"/>
+						</Column>
+						<Column id="idSolReqTblColEstimate">
+							<Text id="idSolReqTblColTxtEstimate" text="{i18n>Estimate}"/>
+						</Column>
+						<Column id="idSolReqTblColStatus">
+							<Text id="idSolReqTblColTxtStatus" text="{i18n>Status}"/>
+						</Column>
+						<!--<Column id="idSolReqTblColPurGrp">-->
+						<!--	<Text id="idSolReqTblColTxtPurGrp" text="{i18n>PurGrp}"/>-->
+						<!--</Column>-->
+						<Column id="idSolReqTblColCurrentApprover">
+							<Text id="idSolReqTblColTxtCurrentApprover" text="{i18n>CurrentApprover}"/>
+						</Column>
+						<Column id="idSolReqTblColApprovedBy">
+							<Text id="idSolReqTblColTxtApprovedBy" text="{i18n>ApprovedBy}"/>
+						</Column>
+						<Column id="idSolReqTblColApprovedOn">
+							<Text id="idSolReqTblColTxtApprovedOn" text="{i18n>ApprovedOn}"/>
+						</Column>
+						<Column id="idSolReqTblColDepartment">
+							<Text id="idSolReqTblColTxtDepartment" text="{i18n>Department}"/>
+						</Column>
+						<Column id="idSolReqTblColReqDate">
+							<Text id="idSolReqTblColTxtReqDate" text="{i18n>RequestDate}"/>
+						</Column>
+					</columns>
+					<items >
+						<ColumnListItem type="Navigation" press="_onEditSolReq">
+							<cells>
+								<ObjectIdentifier id="idSolReqTblCLIReqNum" title="{IntReqNo}"/>
+								<!--<ObjectIdentifier id="idSolReqTblCLIReqNum" title="{RequestNumber}"/>-->
+								<Text id="idSolReqTblCLIType" text="{SolicitationType}"/>
+								<Text id="idSolReqTblCLITitle" text="{Title}" maxLines='1' tooltip="{Title}"/>
+								<Text id="idSolReqTblCLIRequestor" text="{Requestor}"/>
+								<Text id="idSolReqTblCLIRequestorName" text="{RequestorName}"/>
+								<Text id="idSolReqTblCLIEstimate" text="{ path : 'ProjectEstimate' , type: 'sap.ui.model.type.Float', formatOptions : { minFractionDigits: 2 , groupingSeparator: ',',decimalSeparator: '.', maxFractionDigits:2} }"  />
+								<Text id="idSolReqTblCLIStatus" text="{StatusDesc}"/>
+								<Text id="idSolReqTblCLICurrentApprover" text="{CurrentApproverName}"/>
+								<Text id="idSolReqTblCLIApprovedBy" text="{LastApprovedName}"/>
+								<Text id="idSolReqTblCLIApprovedOn" text="{ApprovedDate}"/>
+								<Text id="idSolReqTblCLIDepartment" text="{Department}"/>
+								<Text id="idPayResultssTblCLIOICheckDate"
+									text="{path:'RequestDate', type:'sap.ui.model.type.Date', formatOptions: { format: 'yMd',  UTC : true, style: 'short'}}" class="sapUiSmallMargin"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</IconTabBar>
+		<!--</semantic:headerContent>-->
+	</Page>
+	<!--</semantic:SemanticPage>-->
+</mvc:View>

@@ -1,0 +1,478 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:upload="sap.m.upload" xmlns:ui="sap.ui.richtexteditor" xmlns:u="sap.ui.unified"
+	controllerName="zmm001.zsolreq.controller.SolicitRequest">
+	<Page id="SolReq" showHeader="true" title="Solicitation Request" showFooter="true" showNavButton="false" backgroundDesign="Transparent"
+		navButtonPress="_onPageNavButtonPress" class="sapUiResponsiveContentPadding sapUiFioriObjectPage">
+		<content>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Basic Data" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<core:Title/>
+					<Label text="{i18n>SolicitationTitle}" required="true"/>
+					<Input id="idSolReqTitle" value="{oCrtSolReq>/Title}" liveChange="onTitleChange"/>
+					<Label text="{i18n>Date}"/>
+					<DatePicker id="idSolReqRequestDate"
+						value="{path: '{oCrtSolReq>/RequestDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+						dateValue="{oCrtSolReq>/RequestDate}" required="true" displayFormat="MM/dd/yyyy" change="onReqDateChang"/>
+					<!--<Label/>-->
+					<!--<Text/>-->
+					<Label text="{i18n>SolicitationType}"/>
+					<Select selectedKey="{oCrtSolReq>/SolicitationType}" items="{ path: '/SolicitationTypeSet', sorter: { path: 'Soltyp' } }"
+						forceSelection="false" change="onSoltyp">
+						<core:Item key="{Soltyp}" text="{Soltyp}"/>
+					</Select>
+					<core:Title/>
+					<Label text="{i18n>From}" required="true"/>
+					<Input id="idSolReqRequestor" showSuggestion="true" showValueHelp="true" value="{oCrtSolReq>/Requestor}" suggestionItems="{/UserSet}"
+						valueHelpRequest="handleF4Requestor">
+						<suggestionItems>
+							<core:Item text="{Bname}"/>
+						</suggestionItems>
+					</Input>
+					<Label text="{i18n>SolReqNumber}"/>
+					<Input id="idRequestNumber" value="{oCrtSolReq>/RequestNumber}" editable="false"/>
+					<Label text="{i18n>Department}"/>
+					<Select selectedKey="{oCrtSolReq>/Department}" items="{ path: '/DepartmentsSet', sorter: { path: 'Dptnm' } }" forceSelection="false"
+						change="onDept">
+						<core:Item key="{Dptnm}" text="{Dptnm}"/>
+					</Select>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="true">-->
+					<!--	<f:content>-->
+					<core:Title text="{i18n>TimeLine}"/>
+					<Label text="{i18n>Begin}"/>
+					<DatePicker id="idSolReqContractBegin"
+						value="{path: '{oCrtSolReq>/ContractBegin}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+						dateValue="{oCrtSolReq>/ContractBegin}" required="true" displayFormat="MM/dd/yyyy"/>
+					<core:Title/>
+					<Label text="{i18n>End}"/>
+					<DatePicker id="idSolReqContractEnd"
+						value="{path: '{oCrtSolReq>/ContractEnd}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+						dateValue="{oCrtSolReq>/ContractEnd}" required="true" displayFormat="MM/dd/yyyy"/>
+					<!--<Label text="{i18n>ProposedDueDate}"/>-->
+					<!--<DatePicker-->
+					<!--	value="{path: '{oCrtSolReq>/ProposedDueDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"-->
+					<!--	dateValue="{oCrtSolReq>/ProposedDueDate}" displayFormat="MM/dd/yyyy"/>-->
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="1" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<!--<core:Title/>-->
+					<!--<Label text="{i18n>TimeLine}"/>-->
+					<!--<DatePicker id="idSolReqContractBegin"-->
+					<!--	value="{path: '{oCrtSolReq>/ContractBegin}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"-->
+					<!--	dateValue="{oCrtSolReq>/ContractBegin}" required="true" displayFormat="MM/dd/yyyy"/>-->
+					<!--<DatePicker id="idSolReqContractEnd"-->
+					<!--	value="{path: '{oCrtSolReq>/ContractEnd}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"-->
+					<!--	dateValue="{oCrtSolReq>/ContractEnd}" required="true" displayFormat="MM/dd/yyyy"/>-->
+					<Label text="{i18n>ProposedDueDate}"/>
+					<DatePicker
+						value="{path: '{oCrtSolReq>/ProposedDueDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+						dateValue="{oCrtSolReq>/ProposedDueDate}" displayFormat="MM/dd/yyyy"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="2" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<core:Title/>
+					<Label text="{i18n>MandatoryMeeting}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/MandatoryMeetings}" select=".onMandatoryMeet">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Label text="{i18n>HasRoomBeenReserverd?}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/RoomReserved}">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Label text="{i18n>Location}"/>
+					<ui:Richtexteditor value="{oCrtSolReq>/MeetingsLocation}"/>
+					<!--<Input/>-->
+					<core:Title/>
+					<Label text="{i18n>ProposedDate}"/>
+					<DatePicker class="sapUiSmallMarginBottom"
+						value="{path: '{oCrtSolReq>/MeetingsDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+						dateValue="{oCrtSolReq>/MeetingsDate}" displayFormat="MM/dd/yyyy" change="onMeetingDateChang"/>
+					<Label text="{i18n>Time}"/>
+					<TimePicker value="{path: '{oCrtSolReq>/MeetingsTime}', constraints: { displayFormat: 'Time' } }" displayFormat="HH:mm:ss"
+						change="onMeetingTimeChang"/>
+					<Label text="{i18n>Zone}"/>
+					<Select items="" forceSelection="true" change="">
+						<core:Item key="PST" text="PST"/>
+						<core:Item key="EST" text="EST"/>
+						<core:Item key="IST" text="IST"/>
+					</Select>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="3" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<core:Title/>
+					<Label text="{i18n>JobsiteWalk}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/JobSiteWalk}">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Label text="{i18n>Location}"/>
+					<ui:Richtexteditor value="{oCrtSolReq>/JobSiteLocation}"/>
+					<Label text="{i18n>PPERequired}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/PPEReq}">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<core:Title/>
+					<Label text="{i18n>SpecialInstruction}"/>
+					<ui:Richtexteditor value="{oCrtSolReq>/OtherGroup}"/>
+					<Label text="{i18n>ProposedDate}" labelFor="DTI6623"/>
+					<DateTimeInput type="Date" placeholder="DD/MM/YYYY" class="sapUiSmallMarginBottom" width="100%"/>
+					<Label text="{i18n>Time}"/>
+					<TimePicker value="{path: '{oCrtSolReq>/}', constraints: { displayFormat: 'Time' } }" displayFormat="HH:mm:ss" change="onJobTimeChang"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="The Solicitation is for" singleContainerFullSize="true">
+				<f:content>
+					<VBox>
+						<RadioButtonGroup columns="1" selectedIndex="{oCrtSolReq>/Service}">
+							<buttons>
+								<RadioButton text="{i18n>Engineeringservices}" width="100%"/>
+								<RadioButton text="{i18n>IT/OT(SoftwareOrNetworkConnected)}" width="100%"/>
+								<RadioButton text="{i18n>Materials}" width="100%"/>
+								<RadioButton text="{i18n>ConstructionServices}" width="100%"/>
+								<RadioButton text="{i18n>ProfessionalServices}" width="100%"/>
+								<RadioButton text="{i18n>Others(DefineBelow)}" width="100%"/>
+							</buttons>
+						</RadioButtonGroup>
+						<Input value="{oCrtSolReq>/Other}" width="50%"/>
+					</VBox>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" title="5" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<!--title="5 Will a Contractor's License be required for this work"-->
+				<f:content>
+					<Label text="{i18n>WillAContractor}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/ContractorLicense}">
+						<buttons>
+							<RadioButton text="{i18n>YES}"/>
+							<RadioButton text="{i18n>NO}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<!--<VBox>-->
+					<Label/>
+					<Text/>
+					<RadioButtonGroup columns="1" textDirection="RTL" selectedIndex="{oCrtSolReq>/Type}">
+						<buttons>
+							<RadioButton text="{i18n>A}"/>
+							<RadioButton text="{i18n>B}"/>
+							<RadioButton text="{i18n>C}"/>
+							<RadioButton text="{i18n>C61}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<!--<Label text="{i18n>TypeA}"/>-->
+					<!--<CheckBox selected="{}"/>-->
+					<!--<Label text="{i18n>B}"/>-->
+					<!--<CheckBox selected="{}"/>-->
+					<!--<Label text="{i18n>C}"/>-->
+					<!--<CheckBox selected="{}"/>-->
+					<!--<Label text="{i18n>C61}"/>-->
+					<!--<CheckBox selected="{}"/>-->
+					<Label text="{i18n>Others}"/>
+					<Input value="{oCrtSolReq>/IfTypeC}"/>
+					<core:Title/>
+					<Label/>
+					<Text/>
+					<Label/>
+					<Text/>
+					<Label text="{i18n>TypeCLabel}">
+						<layoutData>
+							<l:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</Label>
+					<Input/>
+					<Label/>
+					<Link text="http://www.cslb.ca.gov_US/Library/Licensing_Classification/"/>
+					<Label text="{i18n>Dspecial}"/>
+					<Input value="{}"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="6" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>PrevailingWagesBeRequired}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/Wages}">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="7" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>BidBondRequired}" required="true"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/BidBond}">
+						<buttons>
+							<RadioButton text="{i18n>NO}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="8" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>CopiesRequired}"/>
+					<Input/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="9" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>WhatIsTheProjectEstimate?}"/>
+					<Input value="{oCrtSolReq>/ProjectEstimate}"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="10" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>ProjectBudjetApproved?}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/ProjectBudget}">
+						<buttons>
+							<RadioButton text="{i18n>YES}"/>
+							<RadioButton text="{i18n>No}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<!--<CheckBox selected="{}" text="{i18n>YES}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+					<Label text="{i18n>(Clarify)}"/>
+					<TextArea rows="3"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="4" labelSpanM="0" labelSpanS="12"
+				title="{i18n>title_11}" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2"
+				columnsM="2" singleContainerFullSize="false">
+				<f:content>
+					<RadioButtonGroup columns="1" selectedIndex="{oCrtSolReq>/FundingSource}" textDirection="">
+						<buttons>
+							<RadioButton text="{i18n>FederalFunding}"/>
+							<RadioButton text="{i18n>StateOfCAFunding}"/>
+							<RadioButton text="{i18n>IIDRevenues}"/>
+							<RadioButton text="{i18n>OtherFundingSources}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<core:Title/>
+					<Label/>
+					<Text/>
+					<Label/>
+					<Text/>
+					<Label text="{i18n>IdenProgram}">
+						<layoutData>
+							<l:GridData span="L6 M6 S12"/>
+						</layoutData>
+					</Label>
+					<Input value="{}"/>
+					<Label text="{i18n>IdenProgramText}"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>REGULATORY}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<!--<core:Title/>-->
+					<Label text="{i18n>CIP013Standard}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/Regulatory}">
+						<buttons>
+							<RadioButton text="{i18n>No}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Input value="{oCrtSolReq>/CertificationNo}"/>
+					<Label text="{i18n>ExecutiveOrder}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/OrderFlag}">
+						<buttons>
+							<RadioButton text="{i18n>No}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Input value="{oCrtSolReq>/OrderNumber}"/>
+					<Label text="{i18n>SenateBill}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/SenateBillFlag}">
+						<buttons>
+							<RadioButton text="{i18n>No}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<Input value="{oCrtSolReq>/SenateBillNo}"/>
+					<Label text="{i18n>MaterialsAreInvolved}"/>
+					<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/AmericaAct}">
+						<buttons>
+							<RadioButton text="{i18n>No}"/>
+							<RadioButton text="{i18n>YES}"/>
+						</buttons>
+					</RadioButtonGroup>
+					<!--<Label text="{i18n>SenateBill}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+					<!--<CheckBox selected="{}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+					<!--<core:Title/>-->
+					<!--<Text text="{i18n>Certification}"/>-->
+					<!--<Text text="{i18n>ExecutiveOrder}"/>-->
+					<!--<Text text="{i18n>SenateBill#}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>YES}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+					<!--<core:Title/>-->
+					<!--<Input/>-->
+					<!--<Input/>-->
+					<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="13" labelSpanXL="8" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>CLARIFY}"/>
+					<Input/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>Contacts}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="true">
+				<f:content>
+					<Table id="idTableEmpConcern" items="{oEmpConcern>/items}">
+						<!--<headerToolbar>-->
+						<!--	<OverflowToolbar design="Transparent" height="3rem">-->
+						<!--		<Title text=""/>-->
+						<!--		<ToolbarSpacer/>-->
+						<!--		<Button icon="sap-icon://add" text="{i18n>AddApprover}"/>-->
+						<!--		<Button icon="sap-icon://delete" text="{i18n>RemoveApprover}"/>-->
+						<!--	</OverflowToolbar>-->
+						<!--</headerToolbar>-->
+						<columns>
+							<Column width="11em"><Text text="{i18n>Title1}"/></Column>
+							<Column width="15em"><Text text="{i18n>Name}"/></Column>
+							<Column width="15em"><Text text="{i18n>FName}"/></Column>
+							<Column width="15em"><Text text="{i18n>LName}"/></Column>
+							<Column><Text text="{i18n>Email}"/></Column>
+							<Column><Text text="{i18n>Cell}"/></Column>
+							<Column><Text text="{i18n>TelephoneNo}"/></Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<Text text="{oEmpConcern>Title}"/>
+								<Input showValueHelp="true" value="{oEmpConcern>Bname}" suggestionItems="{/UserSet}" valueHelpRequest="handleF4User">
+									<suggestionItems>
+										<core:Item text="{Bname}"/>
+									</suggestionItems>
+								</Input>
+								<Text text="{oEmpConcern>NameFirst}"/>
+								<Text text="{oEmpConcern>NameLast}"/>
+								<Text text="{oEmpConcern>SmtpAddr}"/>
+								<Text text="{oEmpConcern>TelNumber}"/>
+								<Text text="{oEmpConcern>TelNumber}"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="15 Approval Overview" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="true">
+				<f:content>
+					<Table id="idTableApprover" items="{oJModel>/Approvers}" mode="MultiSelect">
+						<headerToolbar>
+							<OverflowToolbar design="Transparent" height="3rem">
+								<Title text=""/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://add" text="{i18n>AddApprover}" press=".AddApprover"/>
+								<Button icon="sap-icon://delete" text="{i18n>RemoveApprover}"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="10em"><Text text="{i18n>ApproverTitle}"/></Column>
+							<Column><Text text="{i18n>Approver}"/></Column>
+							<Column width="4em"><Text text="{i18n>Level}"/></Column>
+							<Column width="4em"><Text text="{i18n>SubLevel}"/></Column>
+							<Column><Text text="{i18n>DateReceived}"/></Column>
+							<Column><Text text="{i18n>DateApproved}"/></Column>
+							<Column><Text text="{i18n>Comments}"/></Column>
+							<Column><Text text="{i18n>Status}"/></Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<Text text="{oJModel>Title}"/>
+								<Input showValueHelp="true" value="{oJModel>Username}" suggestionItems="{/UserSet}" valueHelpRequest="handleF4ApprUser">
+									<suggestionItems>
+										<core:Item text="{Bname}"/>
+									</suggestionItems>
+								</Input>
+								<!--<Input value="{oJModel>Username}"/>-->
+								<Input value="{oJModel>Apprlevel}"/>
+								<Input value="{oJModel>Apprsublevel}"/>
+								<Text text="{oJModel>Rcvddate}"/>
+								<Text text="{oJModel>Apprdate}"/>
+								<Text text="{oJModel>Status}"/>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>ATTACHMENTS}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="true">
+				<f:content>
+					<UploadCollection id="UploadCollection" maximumFilenameLength="555555" maximumFileSize="1000" multiple="true" sameFilenameAllowed="true"
+						instantUpload="false" noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload"
+						beforeUploadStarts="onBeforeUploadStartsMainFileNew" change="onChange" fileDeleted="onFileDeleted"
+						filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+						uploadUrl="/sap/opu/odata/sap/ZMM_SOLICITREQ_SRV/ReqAttachmentsSet" uploadComplete="onUploadComplete">
+						<items>
+							<UploadCollectionItem documentId="{DocumentId}" fileName="{FileName}" mimeType="{MimeType}"
+								uploadedDate="{path: 'CreatedDate', type: 'sap.ca.ui.model.type.DateTime', formatOptions: { style: 'medium'}}" enableEdit="false"
+								visibleEdit="false">
+								<attributes>
+									<!--<ObjectAttribute text="{path: '', formatter:'cross.fnd.fiori.inbox.attachment.formatFileSize'}"/>-->
+								</attributes>
+							</UploadCollectionItem>
+						</items>
+						<parameters/>
+					</UploadCollection>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="{= ${message>/}.length &gt; 0 }" type="Emphasized"
+						press="onMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button text="{i18n>SAVE}" type="Emphasized" press=".onSave"/>
+					<Button text="{i18n>ORDER}" type="Emphasized" press=".onOrder"/>
+					<Button text="{i18n>CANCEL}" type="Emphasized" iconDensityAware="false" press=".onCancel"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

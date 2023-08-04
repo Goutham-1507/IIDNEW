@@ -1,0 +1,668 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="zmm001.zsolreq.controller.SolicitRequest" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:ux="sap.uxap" xmlns:upload="sap.m.upload" xmlns:ui="sap.ui.richtexteditor"
+	xmlns:u="sap.ui.unified">
+	<Page id="SolReq" showHeader="true" title="Solicitation Request" showFooter="true" showNavButton="false" backgroundDesign="Transparent"
+		navButtonPress="_onPageNavButtonPress" class="sapUiResponsiveContentPadding sapUiFioriObjectPage">
+		<content>
+			<Text text="All dates and times are in Coordinated Universal Time (UTC)" class="TextFontColour" text-align="justify"></Text>
+			<ux:ObjectPageLayout id="OPL" enableLazyLoading="false" class="ObjectLayout">
+				<ux:sections>
+					<ux:ObjectPageSection id="OPSBasicData" title="Basic Data">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="paneBasicData" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>SolicitationTitle}" required="true" textAlign="Right">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Label>
+											<Input id="idSolReqTitle" value="{oCrtSolReq>/Title}" liveChange="onTitleChange" width="100%">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Input>
+										</l:Grid>
+										<l:Grid width="auto">
+											<Label text="{i18n>Date}" textAlign="Right" class="democlass sapMLabel sapUiSmallMarginTop">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Label>
+											<DatePicker id="idSolReqRequestDate" width="100%"
+												value="{path: '{oCrtSolReq>/RequestDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+												dateValue="{oCrtSolReq>/RequestDate}" required="true" displayFormat="MM/dd/yyyy" change="onReqDateChang">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</DatePicker>
+										</l:Grid>
+										<l:Grid width="auto">
+											<Label text="{i18n>SolicitationType}" class="democlass sapMLabel sapUiSmallMarginTop" textAlign="Right">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Label>
+											<Select selectedKey="{oCrtSolReq>/SolicitationType}" width="100%" items="{ path: '/SolicitationTypeSet', sorter: { path: 'Soltyp' } }"
+												forceSelection='false' change="onSoltyp">
+												<core:Item key="{Soltyp}" text="{Soltyp}"/>
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Select>
+										</l:Grid>
+										<l:Grid width="auto">
+											<Label text="{i18n>From}" class="democlass sapMLabel sapUiSmallMarginTop" textAlign="Right">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Label>
+											<Input id="idSolReqRequestor" showSuggestion="true" width="100%" showValueHelp="true" value="{oCrtSolReq>/Requestor}"
+												suggestionItems="{/UserSet}" valueHelpRequest="handleF4Requestor">
+												<suggestionItems>
+													<core:Item text="{Bname}"/>
+												</suggestionItems>
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Input>
+										</l:Grid>
+										<l:Grid width="auto">
+											<Label text="{i18n>Department}" class="democlass sapMLabel sapUiSmallMarginTop" textAlign="Right">
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Label>
+											<Select selectedKey="{oCrtSolReq>/Department}" width="100%" items="{ path: '/DepartmentsSet', sorter: { path: 'Dptnm' } }"
+												forceSelection='false' change="onDept">
+												<core:Item key="{Dptnm}" text="{Dptnm}"/>
+												<layoutData>
+													<l:GridData span=""/>
+												</layoutData>
+											</Select>
+										</l:Grid>
+										<l:Grid width="auto">
+											<Label text="{i18n>TimeLine}"/>
+											<DatePicker id="idSolReqContractBegin"
+												value="{path: '{oCrtSolReq>/ContractBegin}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+												dateValue="{oCrtSolReq>/ContractBegin}" required="true" displayFormat="MM/dd/yyyy"/>
+											<DatePicker id="idSolReqContractEnd"
+												value="{path: '{oCrtSolReq>/ContractEnd}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+												dateValue="{oCrtSolReq>/ContractEnd}" required="true" displayFormat="MM/dd/yyyy"/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--<ux:ObjectPageSection id="OPSSection2" title="Expected Timeline">-->
+					<!--	<ux:subSections>-->
+					<!--		<ux:ObjectPageSubSection title=" ">-->
+					<!--			<ux:blocks>-->
+					<!--				<Panel id="panel2" width="auto" class="">-->
+					<!--				</Panel>-->
+					<!--			</ux:blocks>-->
+					<!--		</ux:ObjectPageSubSection>-->
+					<!--	</ux:subSections>-->
+					<!--</ux:ObjectPageSection>-->
+					<ux:ObjectPageSection id="OPSSection1" title="1">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel1" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>ProposedDueDate}"/>
+											<DatePicker
+												value="{path: '{oCrtSolReq>/ProposedDueDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+												dateValue="{oCrtSolReq>/ProposedDueDate}" displayFormat="MM/dd/yyyy"/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="2" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<!--		<core:Title/>-->
+					<ux:ObjectPageSection id="OPSSection2" title="2">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel2" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>MandatoryMeeting}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/MandatoryMeetings}" select='.onMandatoryMeet'>
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<Label text="{i18n>HasRoomBeenReserverd?}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/RoomReserved}">
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<Label text="{i18n>Location}"/>
+											<ui:Richtexteditor value='{oCrtSolReq>/MeetingsLocation}'/>
+											<!--<Input/>-->
+											<!--<core:Title/>-->
+											<Label text="{i18n>ProposedDate}"/>
+											<DatePicker class="sapUiSmallMarginBottom"
+												value="{path: '{oCrtSolReq>/MeetingsDate}', type: 'sap.ui.model.type.DateTime', formatOptions: {UTC: true}, constraints: { displayFormat: 'Date' } }"
+												dateValue="{oCrtSolReq>/MeetingsDate}" displayFormat="MM/dd/yyyy" change="onMeetingDateChang"/>
+											<Label text="{i18n>Time}"/>
+											<TimePicker value="{path: '{oCrtSolReq>/MeetingsTime}', constraints: { displayFormat: 'Time' } }" displayFormat="HH:mm:ss"
+												change="onMeetingTimeChang"/>
+											<Label text="{i18n>Zone}"/>
+											<Select items="" forceSelection='true' change="">
+												<core:Item key="PST" text="PST"/>
+												<core:Item key="EST" text="EST"/>
+												<core:Item key="IST" text="IST"/>
+											</Select>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</ux:sections>-->
+					<!--</ux:ObjectPageLayout>-->
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="3" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content >-->
+					<!--		<core:Title/>-->
+					<ux:ObjectPageSection id="OPSSection3" title="3">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel3" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>JobsiteWalk}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/JobSiteWalk}">
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<Label text="{i18n>Location}"/>
+											<ui:Richtexteditor value='{oCrtSolReq>/JobSiteLocation}'/>
+											<Label text="{i18n>PPERequired}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/PPEReq}">
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<Label text="{i18n>SpecialInstruction}"/>
+											<ui:Richtexteditor value="{oCrtSolReq>/OtherGroup}"/>
+											<!--<core:Title/>-->
+											<Label text="{i18n>ProposedDate}" labelFor="DTI6623"/>
+											<DateTimeInput type="Date" placeholder="DD/MM/YYYY" class="sapUiSmallMarginBottom" width="100%"/>
+											<Label text="{i18n>Time}"/>
+											<TimePicker value="{path: '{oCrtSolReq>/}', constraints: { displayFormat: 'Time' } }" displayFormat="HH:mm:ss" change="onJobTimeChang"/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="The Solicitation is for" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+					<!--	labelSpanS="12" adjustLabelSpan="false" emptySpanXL="1" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="true">-->
+					<!--	<f:content >-->
+					<!--		<core:Title/>-->
+					<ux:ObjectPageSection id="OPSSection4" title="The Solicitation is for">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel4" width="auto" class="">
+										<l:Grid width="auto">
+											<RadioButtonGroup columns="6" selectedIndex="{oCrtSolReq>/Service}">
+												<buttons>
+													<RadioButton text="{i18n>Engineeringservices}"/>
+													<RadioButton text="{i18n>IT/OT(SoftwareOrNetworkConnected)}"/>
+													<RadioButton text="{i18n>Materials}"/>
+													<RadioButton text="{i18n>ConstructionServices}"/>
+													<RadioButton text="{i18n>ProfessionalServices}"/>
+													<RadioButton text="{i18n>Others(DefineBelow)}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>Engineeringservices}"/>-->
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>IT/OT(SoftwareOrNetworkConnected)}"/>-->
+											<!--<core:Title/>-->
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>Materials}"/>-->
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>ConstructionServices}"/>-->
+											<!--<core:Title/>-->
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>ProfessionalServices}"/>-->
+											<!--<CheckBox selected="{oCrtSolReq>/}" text="{i18n>Others(DefineBelow)}"/>-->
+											<!--<Input/>-->
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" title="5" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--title="5 Will a Contractor's License be required for this work"-->
+					<!--	<f:content >-->
+					<!--		<core:Title/>-->
+					<ux:ObjectPageSection id="OPSSection5" title="5">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel5" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>WillAContractor}"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/ContractorLicense}">
+												<buttons>
+													<RadioButton text="{i18n>YES}"/>
+													<RadioButton text="{i18n>NO}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<RadioButtonGroup columns="4" selectedIndex="{oCrtSolReq>/Type}">
+												<buttons>
+													<RadioButton text="{i18n>TypeA}"/>
+													<RadioButton text="{i18n>TypeB}"/>
+													<RadioButton text="{i18n>TypeC}"/>
+													<RadioButton text="{i18n>C61}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<!--<Label text="{i18n>TypeA}"/>-->
+											<!--<CheckBox selected="{}"/>-->
+											<!--<Label text="{i18n>B}"/>-->
+											<!--<CheckBox selected="{}"/>-->
+											<!--<Label text="{i18n>C}"/>-->
+											<!--<CheckBox selected="{}"/>-->
+											<!--<Label text="{i18n>C61}"/>-->
+											<!--<CheckBox selected="{}"/>-->
+											<Label text="{i18n>Others}"/>
+											<Input value="{oCrtSolReq>/IfTypeC}"/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="6" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content >-->
+					<ux:ObjectPageSection id="OPSSection6" title="6">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel6" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>PrevailingWagesBeRequired}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/Wages}">
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="7" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSection7" title="7">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel7" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>BidBondRequired}" required="true"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/BidBond}">
+												<buttons>
+													<RadioButton text="{i18n>NO}"/>
+													<RadioButton text="{i18n>YES}"/>
+												</buttons>
+											</RadioButtonGroup>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="8" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSection8" title="8">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel8" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>CopiesRequired}"/>
+											<Input/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="9" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSection9" title="9">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel9" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>WhatIsTheProjectEstimate?}"/>
+											<Input value="{oCrtSolReq>/ProjectEstimate}"/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="10" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSection10" title="1">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel10" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>ProjectBudjetApproved?}"/>
+											<RadioButtonGroup columns="2" selectedIndex="{oCrtSolReq>/ProjectBudget}">
+												<buttons>
+													<RadioButton text="{i18n>YES}"/>
+													<RadioButton text="{i18n>No}"/>
+												</buttons>
+											</RadioButtonGroup>
+											<!--<CheckBox selected="{}" text="{i18n>YES}"/>-->
+											<!--<CheckBox selected="{}" text="{i18n>NO}"/>-->
+											<Label text="{i18n>(Clarify)}"/>
+											<Input/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="11" labelSpanXL="6" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSection11" title="11">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel11" width="auto" class="">
+										<l:Grid width="auto">
+											<RadioButtonGroup columns="4" selectedIndex="{oCrtSolReq>/FundingSource}">
+												<buttons>
+													<RadioButton text="{i18n>FederalFunding}"/>
+													<RadioButton text="{i18n>StateOfCAFunding}"/>
+													<RadioButton text="{i18n>IIDRevenues}"/>
+													<RadioButton text="{i18n>OtherFundingSources}"/>
+												</buttons>
+											</RadioButtonGroup>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--<Label text="{i18n>FundingSource/OtherFederalRequirements}"/>-->
+					<!--<CheckBox selected="{}" text="{i18n>FederalFunding}"/>-->
+					<!--<Label text=""/>-->
+					<!--<CheckBox selected="{}" text="{i18n>StateOfCAFunding}"/>-->
+					<!--<Label text=""/>-->
+					<!--<CheckBox selected="{}" text="{i18n>IIDRevenues}"/>-->
+					<!--<Label text=""/>-->
+					<!--<CheckBox selected="{}" text="{i18n>OtherFundingSources}"/>-->
+					<!--<Label text=""/>-->
+					<!--<Text text="{i18n>FundingSource:}"/>-->
+					<!--<Text text="{i18n>AttachAnyDocumentation}"/>-->
+					<!--<Input/>-->
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<VBox>-->
+					<!--	<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>REGULATORY}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"-->
+					<!--		labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--		singleContainerFullSize="false">-->
+					<!--		<f:content >-->
+					<!--			<core:Title/>-->
+					<ux:ObjectPageSection id="OPSSectionRegulatory" title="{i18n>REGULATORY}">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panelRegulatory" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>CIP013Standard}"/>
+											<CheckBox selected="{}"/>
+											<Text text='{i18n>Certification}'/>
+											<Input/>
+											<CheckBox selected="{}" text='{i18n>NO}'/>
+											<!--<core:Title/>-->
+											<Label text="{i18n>ExecutiveOrder}"/>
+											<CheckBox selected="{}"/>
+											<Text text='{i18n>ExecutiveOrder}'/>
+											<Input/>
+											<CheckBox selected="{}" text='{i18n>NO}'/>
+											<!--<core:Title/>-->
+											<Label text="{i18n>SenateBill}"/>
+											<CheckBox selected="{}"/>
+											<Text text='{i18n>SenateBill#}'/>
+											<Input/>
+											<CheckBox selected="{}" text='{i18n>NO}'/>
+											<!--<core:Title/>-->
+											<Label text="{i18n>MaterialsAreInvolved} "/>
+											<CheckBox selected="{}" text='{i18n>YES}'/>
+											<CheckBox selected="{}" text='{i18n>NO}'/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--		</f:content>-->
+					<!--	</f:SimpleForm>-->
+					<!--</VBox>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="13" labelSpanXL="8" labelSpanL="4" labelSpanM="12" labelSpanS="12"-->
+					<!--	adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="false">-->
+					<!--	<f:content >-->
+					<ux:ObjectPageSection id="OPSSection13" title="1">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<Panel id="panel13" width="auto" class="">
+										<l:Grid width="auto">
+											<Label text="{i18n>CLARIFY}"/>
+											<Input/>
+										</l:Grid>
+									</Panel>
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>Contacts}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"-->
+					<!--	labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="true">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSectionContacts" title="{i18n>Contacts}">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<!--<Panel id="panelContacts" width="auto" class="">-->
+									<!--	<l:Grid width="auto">-->
+									<Table id="idTableEmpConcern" items="{oEmpConcern>/items}" width="100%">
+										<!--<headerToolbar>-->
+										<!--	<OverflowToolbar design="Transparent" height="3rem">-->
+										<!--		<Title text=""/>-->
+										<!--		<ToolbarSpacer/>-->
+										<!--		<Button icon="sap-icon://add" text="{i18n>AddApprover}"/>-->
+										<!--		<Button icon="sap-icon://delete" text="{i18n>RemoveApprover}"/>-->
+										<!--	</OverflowToolbar>-->
+										<!--</headerToolbar>-->
+										<columns>
+											<Column width="11em"><Text text="{i18n>Title1}"/></Column>
+											<Column width="15em"><Text text="{i18n>Name}"/></Column>
+											<Column width="15em"><Text text="{i18n>FName}"/></Column>
+											<Column width="15em"><Text text="{i18n>LName}"/></Column>
+											<Column><Text text="{i18n>Email}"/></Column>
+											<Column><Text text="{i18n>Cell}"/></Column>
+											<Column><Text text="{i18n>TelephoneNo}"/></Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<Text text="{oEmpConcern>Title}"/>
+												<Input showValueHelp="true" value="{oEmpConcern>Bname}" suggestionItems="{/UserSet}" valueHelpRequest="handleF4User">
+													<suggestionItems>
+														<core:Item text="{Bname}"/>
+													</suggestionItems>
+												</Input>
+												<Text text="{oEmpConcern>NameFirst}"/>
+												<Text text="{oEmpConcern>NameLast}"/>
+												<Text text="{oEmpConcern>SmtpAddr}"/>
+												<Text text="{oEmpConcern>TelNumber}"/>
+												<Text text="{oEmpConcern>TelNumber}"/>
+											</ColumnListItem>
+										</items>
+									</Table>
+									<!--	</l:Grid>-->
+									<!--</Panel>-->
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="15 Approval Overview" labelSpanXL="4" labelSpanL="4" labelSpanM="12"-->
+					<!--	labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="true">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSSectionApproval" title="15 Approval Overview">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<!--<Panel id="panelapproval" width="auto" class="">-->
+									<!--	<l:Grid width="auto">-->
+									<Table id="idTableApprover" items="{/ApproverSet}">
+										<headerToolbar>
+											<OverflowToolbar design="Transparent" height="3rem">
+												<Title text=""/>
+												<ToolbarSpacer/>
+												<!--<Button icon="sap-icon://add" text="{i18n>AddApprover}"/>-->
+												<!--<Button icon="sap-icon://delete" text="{i18n>RemoveApprover}"/>-->
+											</OverflowToolbar>
+										</headerToolbar>
+										<columns>
+											<Column width="10em"><Text text="{i18n>ApproverTitle}"/></Column>
+											<Column><Text text="{i18n>Approver}"/></Column>
+											<Column><Text text="{i18n>DateReceived}"/></Column>
+											<Column><Text text="{i18n>DateApproved}"/></Column>
+											<Column><Text text="{i18n>Comments}"/></Column>
+											<Column><Text text="{i18n>Status}"/></Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<Text text="{Title}"/>
+												<Text text="{Username}"/>
+												<Text text="{Rcvddate}"/>
+												<Text text="{Apprdate}"/>
+												<Text text="{Status}"/>
+											</ColumnListItem>
+										</items>
+									</Table>
+									<!--	</l:Grid>-->
+									<!--</Panel>-->
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+					<!--	</f:content>-->
+					<!--</f:SimpleForm>-->
+					<!--<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>ATTACHMENTS}" labelSpanXL="4" labelSpanL="4" labelSpanM="12"-->
+					<!--	labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"-->
+					<!--	singleContainerFullSize="true">-->
+					<!--	<f:content>-->
+					<ux:ObjectPageSection id="OPSAttachment" title="{i18n>ATTACHMENTS}">
+						<ux:subSections>
+							<ux:ObjectPageSubSection title=" ">
+								<ux:blocks>
+									<!--<Panel id="panelAtt" width="auto" class="">-->
+									<!--	<l:Grid width="auto">-->
+									<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true"
+										items="{/AttachmentsSet}" instantUpload="false"
+										noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" change="onChange"
+										fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+										uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts">
+										<items>
+											<UploadCollectionItem documentId="{DocumentId}" fileName="{FileName}" mimeType="{MimeType}"
+												uploadedDate="{path: 'CreatedDate', type: 'sap.ca.ui.model.type.DateTime', formatOptions: { style: 'medium'}}" enableEdit="false"
+												visibleEdit="false">
+												<attributes>
+													<!--<ObjectAttribute text="{path: '', formatter:'cross.fnd.fiori.inbox.attachment.formatFileSize'}"/>-->
+												</attributes>
+											</UploadCollectionItem>
+										</items>
+										<parameters/>
+									</UploadCollection>
+									<!--	</l:Grid>-->
+									<!--</Panel>-->
+								</ux:blocks>
+							</ux:ObjectPageSubSection>
+						</ux:subSections>
+					</ux:ObjectPageSection>
+				</ux:sections>
+			</ux:ObjectPageLayout>
+			<!--	</f:content>-->
+			<!--</f:SimpleForm>-->
+		</content>
+		<footer>
+			<OverflowToolbar width="100%" height="46px" design="Auto" enabled="true" visible="true">
+				<content>
+					<Button icon="sap-icon://alert" text="{= ${message>/}.length }" visible="{= ${message>/}.length > 0 }" type="Emphasized"
+						press="onMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button text="{i18n>SAVE}" type="Emphasized" press=".onSave"/>
+					<Button text="{i18n>ORDER}" type="Emphasized" press=".onOrder"/>
+					<Button text="{i18n>CANCEL}" type="Emphasized" iconDensityAware="false" press=".onCancel"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

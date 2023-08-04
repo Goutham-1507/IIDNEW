@@ -1,0 +1,153 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "zmm001.zsolreq",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"ZMM_SOLICITREQ_SRV": {
+				"uri": "/sap/opu/odata/sap/ZMM_SOLICITREQ_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZMM_SOLICITREQ_SRV/metadata.xml"
+				}
+			}
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"_version": "1.3.0"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"_version": "1.3.0",
+		"supportedThemes": []
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "zmm001.zsolreq.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "zsolreqapp"
+		},
+		"dependencies": {
+			"minUI5Version": "1.71.28",
+			"libs": {
+				"sap.f": {
+					"minVersion": ""
+				},
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "zmm001.zsolreq.i18n.i18n"
+				},
+				"preload": true,
+				"async": false
+			},
+			"oJModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZMM_SOLICITREQ_SRV",
+				"preload": true
+			},
+			"oJModel1": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "zmm001.zsolreq.view",
+				"controlAggregation": "pages",
+				"controlId": "zsolreqapp",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Worklist",
+					"target": [
+						"Worklist"
+					]
+				},
+				{
+					"pattern": "SolicitRequest/{RequestNumber}",
+					"name": "SolicitRequest",
+					"target": [
+						"SolicitRequest"
+					]
+				}
+			],
+			"targets": {
+				"Worklist": {
+					"viewType": "XML",
+					"viewName": "Worklist",
+					"transition": "slide",
+					"clearControlAggregation": false
+				},
+				"SolicitRequest": {
+					"controlAggregation": "pages",
+					"viewName": "SolicitRequest",
+					"viewId": "SolicitRequest",
+					"transition": "slide"
+				}
+			}
+		},
+		"_version": "1.2.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zsolicitreq",
+		"_version": "1.1.0"
+	}
+}
